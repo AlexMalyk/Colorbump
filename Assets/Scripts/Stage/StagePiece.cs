@@ -34,6 +34,8 @@ public class StagePiece : MonoBehaviour
             figures[i].figureData.rotation = figures[i].transform.localRotation;
             data.figuresData.Add(figures[i].figureData);
         }
+
+        UnityEditor.EditorUtility.SetDirty(data);
     }
 #endif
     #endregion
