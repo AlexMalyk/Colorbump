@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class StagePiece : MonoBehaviour
 {
     [SerializeField] private StagePieceData data;
 
-    public ObjectPools objectPools;
+    [SerializeField] private ObjectPools objectPools;
 
     public void CreateStagePiece(StagePieceData stagePieceData)
     {
@@ -21,6 +20,7 @@ public class StagePiece : MonoBehaviour
         }
     }
 
+    #region Editor Methods
 #if UNITY_EDITOR
     public void SetDataFromScene()
     {
@@ -36,4 +36,5 @@ public class StagePiece : MonoBehaviour
         }
     }
 #endif
+    #endregion
 }

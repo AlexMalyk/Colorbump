@@ -1,7 +1,6 @@
 ﻿using Events;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PaletteSetter : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class PaletteSetter : MonoBehaviour
         mainCamera = Camera.main;     
     }
 
+    #region Enable/Disable 
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, OnGameSetup);
@@ -29,11 +29,7 @@ public class PaletteSetter : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_GameSetup, OnGameSetup);
     }
-
-    private void OnGameSetup()
-    {
-        SetRandomPalette();
-    }
+    #endregion
 
     public void SetRandomPalette()
     {
@@ -46,6 +42,11 @@ public class PaletteSetter : MonoBehaviour
             SetMaterials(palettes[i]);
             lastPaletteIndex = i;
         }
+    }
+
+    private void OnGameSetup()
+    {
+        SetRandomPalette();
     }
 
     private void SetMaterials(Palette palette)

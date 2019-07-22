@@ -11,9 +11,9 @@ public class Palette : ScriptableObject
     #endregion
 
     #region Properties
-    public Color GoodColor { get => goodColor; }
-    public Color BadColor { get => badColor; }
-    public Color FloorColor { get => floorColor; }
-    public Color BackgroundColor { get => backgroundColor; }
+    public Color GoodColor => goodColor;
+    public Color BadColor => badColor;
+    public Color FloorColor => floorColor;
+    public Color BackgroundColor => backgroundColor;
     #endregion
 }

@@ -8,6 +8,7 @@ public class UIControl : MonoBehaviour
     [SerializeField] private GameObject restartUI;
     [SerializeField] private GameObject firstTouchUI;
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, OnGameSetup);
@@ -22,6 +23,12 @@ public class UIControl : MonoBehaviour
         EventManager.StopListening(EventId.Event_GameStart, OnGameStart);
         EventManager.StopListening(EventId.Event_GameFail, OnGameFail);
         EventManager.StopListening(EventId.Event_GameFinish, OnGameFinish);
+    }
+    #endregion
+
+    public void OpenMenu()
+    {
+        SetGameUI(false);
     }
 
     private void OnGameSetup()
@@ -52,10 +59,5 @@ public class UIControl : MonoBehaviour
 
         gameUI.SetActive(value);
         firstTouchUI.SetActive(value);
-    }
-
-    public void OpenMenu()
-    {
-        SetGameUI(false);
     }
 }

@@ -7,6 +7,7 @@ public class StageCreator : MonoBehaviour
     [SerializeField] private List<StagePiece> stagePieces;
     [SerializeField] private List<StagePieceData> stagePiecesData;
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, CreateStages);
@@ -16,6 +17,7 @@ public class StageCreator : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_GameSetup, CreateStages);
     }
+    #endregion
 
     public void CreateStages()
     {

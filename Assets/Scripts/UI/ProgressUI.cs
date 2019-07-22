@@ -7,6 +7,7 @@ public class ProgressUI : MonoBehaviour
     [SerializeField] private Image fillImage;
     [SerializeField] private Transform playerTransfrom;
 
+    #region Enable / DIsable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, OnGameSetup);
@@ -16,6 +17,7 @@ public class ProgressUI : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_GameSetup, OnGameSetup);
     }
+    #endregion
 
     private void Update()
     {
@@ -25,7 +27,7 @@ public class ProgressUI : MonoBehaviour
             fillImage.fillAmount = zPosition / 100;
     }
 
-    void OnGameSetup()
+    private void OnGameSetup()
     {
         fillImage.fillAmount = 0;
     }

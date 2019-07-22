@@ -12,12 +12,11 @@ public class Figure : MonoBehaviour
     [SerializeField] private Material materialBad;
     [SerializeField] private Material materialGood;
 
-    public FigureType FigureType { get => figureData.figureType; }
+    public FigureType FigureType => figureData.figureType;
 
     public void CreateFigure(FigureData data, Transform parent)
     {
         this.transform.parent = parent;
-
 
         SetData(data);
     }
@@ -37,17 +36,17 @@ public class Figure : MonoBehaviour
         rigidbody.angularVelocity = Vector3.zero;
     }
 
-    void SetPosition(Vector3 position)
+    private void SetPosition(Vector3 position)
     {
         transform.localPosition = position;
     }
 
-    void SetRotation(Quaternion rotation)
+    private void SetRotation(Quaternion rotation)
     {
         transform.localRotation = rotation;
     }
 
-    void SetTag(FigureStatus status)
+    private void SetTag(FigureStatus status)
     {
         if (status == FigureStatus.Bad)
         {
@@ -69,12 +68,14 @@ public class Figure : MonoBehaviour
         }
     }
 
+    #region Editor Methods
 #if UNITY_EDITOR
     public void UpdateView()
     {
         SetTag(figureData.figureStatus);
     }
 #endif
+    #endregion
 }
 
 [System.Serializable]

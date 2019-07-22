@@ -13,6 +13,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private int lastUsedIndex;
     [SerializeField] private int objectsCount;
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, ClearField);
@@ -22,8 +23,9 @@ public class ObjectPool : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_GameSetup, ClearField);
     }
+    #endregion
 
-    public void Start()
+    private void Start()
     {
         pool = poolParent.GetComponentsInChildren<Figure>().ToList();
 
@@ -64,18 +66,18 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    void ResetLastUsedIndexes()
+    private void ResetLastUsedIndexes()
     {
         lastUsedIndex = -1;
     }
 
-    public void ClearField()
+    private void ClearField()
     {
         ResetLastUsedIndexes();
         HideNotUsedFigures();
     }
 
-    void AddFigure()
+    private void AddFigure()
     {
         GameObject gObject = Instantiate(prefab, poolParent);
 

@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Updates
-    void Update()
+    private void Update()
     {
         if (!isMoveAllowed)
             return;

@@ -1,6 +1,4 @@
 ﻿using Events;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,12 +13,10 @@ public class ObjectPools : MonoBehaviour
         objectPools = new Dictionary<FigureType, ObjectPool>();
 
         for (int i = 0; i < pools.Length; i++)
-        {
-            objectPools.Add(pools[i].GetFigure().figureData.figureType, pools[i]);
-        }
-        
+            objectPools.Add(pools[i].GetFigure().figureData.figureType, pools[i]);      
     }
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_StageCreated, OnStageCreated);
@@ -30,19 +26,18 @@ public class ObjectPools : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_StageCreated, OnStageCreated);
     }
-
-    private void OnStageCreated()
-    {
-        foreach (var pool in objectPools)
-        {
-            pool.Value.HideNotUsedFigures();
-        }
-    }
+    #endregion
 
     public Figure GetFigureByType(FigureType figureType)
     {
         objectPools.TryGetValue(figureType, out ObjectPool pool);
 
         return pool.GetFigure();
+    }
+
+    private void OnStageCreated()
+    {
+        foreach (var pool in objectPools)
+            pool.Value.HideNotUsedFigures();
     }
 }

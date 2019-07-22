@@ -1,13 +1,11 @@
 ﻿using Events;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticleControl : MonoBehaviour
 {
     [SerializeField] GameObject particleSystem;
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, OnGameSetup);
@@ -19,6 +17,7 @@ public class ParticleControl : MonoBehaviour
         EventManager.StopListening(EventId.Event_GameSetup, OnGameSetup);
         EventManager.StopListening(EventId.Event_GameStart, OnGameStart);
     }
+    #endregion
 
     private void OnGameSetup()
     {
@@ -28,6 +27,5 @@ public class ParticleControl : MonoBehaviour
     private void OnGameStart()
     {
         particleSystem.SetActive(false);
-
     }
 }

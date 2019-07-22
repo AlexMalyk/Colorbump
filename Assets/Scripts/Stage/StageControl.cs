@@ -5,6 +5,7 @@ public class StageControl : MonoBehaviour
 {
     [SerializeField] private GameObject stage;
 
+    #region Enable / Disable
     private void OnEnable()
     {
         EventManager.StartListening(EventId.Event_GameSetup, OnGameSetup);
@@ -14,8 +15,9 @@ public class StageControl : MonoBehaviour
     {
         EventManager.StopListening(EventId.Event_GameSetup, OnGameSetup);
     }
+    #endregion
 
-    void OnGameSetup()
+    private void OnGameSetup()
     {
         stage.SetActive(true);
     }
